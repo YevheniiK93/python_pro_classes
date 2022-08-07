@@ -5,7 +5,7 @@ class Product:
         self.description = description
 
     def __str__(self):
-        return f"{self.price}, {self.description}"
+        return f"{self.description}: {self.price}"
 
 
 class Customer:
@@ -44,9 +44,9 @@ class Order:
         res = f'{self.customer}\n'
 
         for index, item in enumerate(self.products):
-            res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} грн.\n'
+            res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} uah.\n'
 
-        res += f'Total price: {self.total()} грн.'
+        res += f'Total price: {self.total()} uah.'
         return res
 
 
@@ -69,5 +69,4 @@ total_order_2.add_order(product_2, 1)
 total_order_2.add_order(product_3, 1)
 
 print(total_order_1)
-print()
 print(total_order_2)
