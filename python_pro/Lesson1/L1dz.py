@@ -1,58 +1,73 @@
 class Product:
 
-    def __init__(self, price, description, gabarites):
-
+    def __init__(self, price: int, description: str):
         self.price = price
         self.description = description
-        self.gabarites = gabarites
 
     def __str__(self):
-        return f"{self.price}, {self.description}, {self.gabarites}"
+        return f"{self.price}, {self.description}"
 
 
 class Customer:
 
-    def __init__(self, name, surname, age):
-
+    def __init__(self, name: str, surname: str, phone: str):
         self.name = name
         self.surname = surname
-        self.age = age
+        self.phone = phone
 
     def __str__(self):
-        return f"{self.name}, {self.surname}, {self.age}"
+        return f"{self.surname} {self.name[0]}., {self.phone}"
 
 
 class Order:
-    def __init__(self, cust):
-        self.title = cust
-        self.orders = []
 
-    def add_order(self, product: Product):
-        self.orders.append(product)
+    def __init__(self, customer: Customer):
+        self.customer = customer
+        self.products = []
+        self.quantities = []
 
-    def __str__(self):
-        res = f"{self.title}\n"
-        res += "\n".join(map(str, self.orders))
+    def add_order(self, product: Product, quantity: int):
+        if product in self.products:
+            index = self.products.index(product)
+            self.quantities[index] += quantity
+        else:
+            self.products.append(product)
+            self.quantities.append(quantity)
+
+    def total(self):
+        res = 0
+        for index, item in enumerate(self.products):
+            res += item.price * self.quantities[index]
         return res
 
-    def total_sum(self, product: Product):
-        t_sum = 0
-        t_sum += product[0]
-        return f"Total sum = {t_sum}"
+    def __str__(self):
+        res = f'{self.customer}\n'
+
+        for index, item in enumerate(self.products):
+            res += f'\t{item} x {self.quantities[index]} = {item.price * self.quantities[index]} грн.\n'
+
+        res += f'Total price: {self.total()} грн.'
+        return res
 
 
-product_1 = Product(100, "High_quality", "10-10-10" )
-product_2 = Product(150, "Extra_quality", "15-20-10")
-product_3 = Product(200, "De-Luxe", "15-15-15")
+product_1 = Product(100, "Pizza small")
+product_2 = Product(150, "Pizza Middle")
+product_3 = Product(200, "Pizza Large")
 
-cust_1 = Customer("Matt", "Leblanc", 55)
-cust_2 = Customer("David", "Schwimmer", 55)
-cust_3 = Customer("Lisa", "Kudrow", 59)
-
-
-total_order = Order(cust_1)
-total_order.add_order(product_2)
-total_order.add_order(product_3)
+cust_1 = Customer("Matt", "Leblanc", "555-55-55")
+cust_2 = Customer("David", "Schwimmer", "555-01-02")
 
 
-print(total_order)
+total_order_1 = Order(cust_1)
+total_order_2 = Order(cust_2)
+
+total_order_1.add_order(product_2, 1)
+total_order_1.add_order(product_3, 2)
+
+total_order_2.add_order(product_1, 1)
+total_order_2.add_order(product_2, 1)
+total_order_2.add_order(product_3, 1)
+
+print(total_order_1)
+print()
+print(total_order_2)
