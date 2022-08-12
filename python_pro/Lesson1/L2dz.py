@@ -48,7 +48,7 @@ class Student(Human):
 class Group:
     def __init__(self, course):
         """Group title"""
-        self.title = course
+        self.title = course.rjust(23, " ")
         self.students = []
 
     def add_student(self, student: Student):
