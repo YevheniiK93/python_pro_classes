@@ -59,7 +59,16 @@ class Group:
     def remove_student(self, student: Student):
         """Removing students from group-list"""
         self.students.remove(student)
-
+    
+    def search(self, surname):
+        for i in self.students:
+            if surname == i.surname:
+                res = f'Student with last name {surname} in group.'
+                break
+            else:
+                res = f'Student with last name {surname} not in group.'
+        return res
+    
     def __str__(self):
         """Return students group"""
         res = f"{self.title}\n"
