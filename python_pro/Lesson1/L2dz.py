@@ -1,5 +1,5 @@
 import random
-import datetime
+from datetime import date, timedelta
 
 
 class Human:
@@ -30,13 +30,12 @@ class Student(Human):
         """
         Calculate days from date.self to today, generate age in years
         """
+        today = date.today()
         birth_date = self.date.split("-")
-        aa = datetime.date(int(birth_date[2]), int(birth_date[1]), int(birth_date[0]))
-        bb = datetime.date.today()
-        cc = aa - bb
-        dd = str(cc)
-        yo = round(int(dd.split()[0]) / -365)
-        return yo
+        bd = date(int(birth_date[2]), int(birth_date[1]), int(birth_date[0]))
+        age = today - bd
+        year = timedelta(days=365)
+        return int(age/year)
 
     def __str__(self):
         """
