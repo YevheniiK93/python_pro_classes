@@ -57,7 +57,7 @@ class Group:
             self.students.append(student)
 
     def remove_student(self, student: Student):
-        """Adding students from group-list"""
+        """Removing students from group-list"""
         self.students.remove(student)
 
     def __str__(self):
