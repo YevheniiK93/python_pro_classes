@@ -101,7 +101,9 @@ gr_python.add_student(man8)
 gr_python.add_student(man9)
 gr_python.add_student(man10)
 gr_python.remove_student(man2)
+
 print(gr_python)
+print(gr_python.search("Leblanc"))
 
 
 
