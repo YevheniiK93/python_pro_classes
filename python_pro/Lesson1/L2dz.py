@@ -30,8 +30,8 @@ class Student(Human):
         """
         Calculate days from date.self to today, generate age in years
         """
-        self.date = self.date.split("-")
-        aa = datetime.date(int(self.date[2]), int(self.date[1]), int(self.date[0]))
+        birth_date = self.date.split("-")
+        aa = datetime.date(int(birth_date[2]), int(birth_date[1]), int(birth_date[0]))
         bb = datetime.date.today()
         cc = aa - bb
         dd = str(cc)
@@ -59,15 +59,12 @@ class Group:
     def remove_student(self, student: Student):
         """Removing students from group-list"""
         self.students.remove(student)
-    
+   
     def search(self, surname):
         for i in self.students:
             if surname == i.surname:
-                res = f'Student with last name {surname} in group.'
-                break
-            else:
-                res = f'Student with last name {surname} not in group.'
-        return res
+                return f"\n{i}"
+        return -1
     
     def __str__(self):
         """Return students group"""
