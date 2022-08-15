@@ -1,5 +1,6 @@
 import random
 from datetime import date, timedelta
+MAX_STUDENT_COUNT = 8
 
 
 class Human:
@@ -63,7 +64,7 @@ class Group:
     def add_student(self, student: Student):
         """Adding students to group"""
 
-        if len(self.students) >= 8:
+        if len(self.students) >= MAX_STUDENT_COUNT:
             raise MaxStudentsError("Too many student in group!")
 
         if student not in self.students:
