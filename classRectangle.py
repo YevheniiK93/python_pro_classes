@@ -16,7 +16,10 @@ class Rectangle:
         return self.a * self.b
 
     def __add__(self, other):
-        return self.square() + other.square()
+        if not isinstance(other, Rectangle):
+            return self.square() < other.square()
+        tmp = self.square() + other.square()
+        return Rectangle(1, tmp)
 
     def __mul__(self, other: int | float):
         if not isinstance(other, (int, float)):
