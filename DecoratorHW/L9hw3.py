@@ -5,9 +5,8 @@ to save result string in text-file, with name such class-name"""
 def save_file_dec(f):
     def my_function(arg):
         res = f(arg)
-        my_file = open(arg.class_name + ".txt", "w")
-        my_file.write(f(arg))
-        my_file.close()
+        with open('newfile.txt', 'w') as g:
+            print(res, file=g)
         return res
     return my_function
 
