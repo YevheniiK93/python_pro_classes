@@ -24,7 +24,6 @@ class Rectangle:
     def __mul__(self, other: int | float):
         if not isinstance(other, (int, float)):
             return NotImplemented
-
         tmp = self.square() * other
         return Rectangle(1, tmp)
 
