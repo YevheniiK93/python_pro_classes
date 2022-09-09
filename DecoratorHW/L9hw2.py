@@ -1,5 +1,6 @@
 """Create a decorator that will register the function to be
 decorated in list of functions to process the sequence."""
+
 f_list = []
 
 
