@@ -7,7 +7,7 @@ class MyDescriptor:
         pass
 
     def __get__(self, instance_self, instance_class):
-        eturn instance_self.p
+        return instance_self.p
 
     def __set__(self, instance_self, value):
         raise AttributeError("Field is read-only")
