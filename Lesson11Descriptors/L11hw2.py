@@ -2,35 +2,27 @@
 of class fields any value other than integers."""
 
 
+import math
+
+
 class Circle:
 
-    def __init__(self, radius: int):
-        if not isinstance(radius, int):
+    def __init__(self, r: int):
+        if not isinstance(r, int):
             raise TypeError()
-        if radius <= 0:
+        if r <= 0:
             raise ValueError()
+        self.r = r
 
-        self.radius = radius
+    def __str__(self):
+        return f"Circle radius = {self.r}, diameter = {self.r * 2}, " \
+               f"round length = {self.r * 2 * math.pi}"
 
-    @property
-    def radius(self):
-        return self.__radius
-
-    @radius.setter
-    def radius(self, value):
-        if not isinstance(value, int):
+    def __setattr__(self, attr_name, attr_value):
+        if not isinstance(attr_value, int):
             raise TypeError()
-        if value <= 0:
-            raise ValueError()
-
-        self.__radius = value
-
-    @radius.deleter
-    def radius(self):
-        pass
+        self.__dict__[attr_name] = attr_value
 
 
 c = Circle(5)
-print(c.radius)
-c.radius = 10
-print(c.radius)
+print(c)
