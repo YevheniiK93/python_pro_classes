@@ -4,10 +4,10 @@ read-only."""
 
 class MyDescriptor:
     def __init__(self, value):
-        self.value = value
+        pass
 
     def __get__(self, instance_self, instance_class):
-        return self.value
+        eturn instance_self.p
 
     def __set__(self, instance_self, value):
         raise AttributeError("Field is read-only")
@@ -19,11 +19,9 @@ class MyDescriptor:
 class Box:
 
     def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+        self.p = x*y*z
 
     def __str__(self):
         return f"Box [x = {self.x}, y = {self.y}, z = {self.z}]"
 
-    sides_qty = MyDescriptor("3")
+    sides_qty = MyDescriptor()
