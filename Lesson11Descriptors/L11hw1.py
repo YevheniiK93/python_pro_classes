@@ -24,4 +24,4 @@ class Box:
     def __str__(self):
         return f"Box [x = {self.x}, y = {self.y}, z = {self.z}]"
 
-    sides_qty = MyDescriptor()
+    value = MyDescriptor()
