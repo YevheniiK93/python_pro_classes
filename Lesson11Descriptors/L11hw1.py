@@ -3,7 +3,7 @@ read-only."""
 
 
 class MyDescriptor:
-    def __init__(self, value):
+    def __init__(self):
         pass
 
     def __get__(self, instance_self, instance_class):
@@ -21,7 +21,10 @@ class Box:
     def __init__(self, x, y, z):
         self.p = x*y*z
 
-    def __str__(self):
-        return f"Box [x = {self.x}, y = {self.y}, z = {self.z}]"
-
     value = MyDescriptor()
+
+
+
+b1 = Box(2,3,4)
+print(b1.value)
+
